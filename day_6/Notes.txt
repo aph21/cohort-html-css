@@ -1,0 +1,172 @@
+===================================================
+           DAY 6 - CSS GRID LAYOUTS
+===================================================
+
+Today's Focus: CSS Grid — a powerful 2D layout system
+
+
+-------------------
+1) WHAT IS GRID?
+-------------------
+- Grid is a 2-Dimensional layout system (handles both rows AND columns at the same time).
+- Compare with Flexbox which is 1-Dimensional (either row OR column at a time).
+- Grid lets you divide a page into regions with precise control over sizing and placement.
+
+
+-------------------
+2) TWO PLAYERS
+-------------------
+1) Grid Container  → The parent element where `display: grid;` is applied.
+2) Grid Items      → The container's direct children. These get placed into the grid.
+
+
+-------------------
+3) DEFINING THE GRID STRUCTURE
+-------------------
+
+a) grid-template-columns
+   - Defines how many columns and their widths.
+   - Examples:
+       grid-template-columns: 35% 40% 25%;         → 3 columns using percentages
+       grid-template-columns: 200px 300px 200px;    → 3 columns using fixed pixels
+       grid-template-columns: 1fr 1fr 1fr;          → 3 equal columns using fractions
+       grid-template-columns: 50% 50%;              → 2 equal columns
+
+b) grid-template-rows
+   - Defines how many rows and their heights.
+   - Examples:
+       grid-template-rows: 1fr 1fr 1fr;             → 3 equal rows
+       grid-template-rows: repeat(2, 25%);           → 2 rows, each 25% tall
+       grid-template-rows: 10% 40% 40% 10%;         → 4 rows with custom heights
+
+c) repeat() function
+   - Shorthand to avoid writing the same value multiple times.
+   - repeat(3, 1fr) is the same as writing 1fr 1fr 1fr
+   - repeat(2, 25%) is the same as writing 25% 25%
+
+
+-------------------
+4) WHAT IS 'fr'? (Fraction Unit)
+-------------------
+- 'fr' stands for "fraction of the available space".
+- It distributes space proportionally among tracks.
+- Example:
+    grid-template-columns: 1fr 1fr 1fr;
+    → Each column gets 1/3 of the available width.
+
+    grid-template-columns: 1fr 2fr 1fr;
+    → Middle column gets 2x the space of the side columns.
+
+- 'fr' is preferred over percentages because it automatically accounts for gaps.
+
+
+-------------------
+5) GAP (SPACING BETWEEN GRID ITEMS)
+-------------------
+- column-gap: 20px;       → Space between columns only
+- row-gap: 15px;          → Space between rows only
+- gap: 20px;              → Shorthand for both row-gap and column-gap
+- gap: 15px 20px;         → row-gap: 15px, column-gap: 20px
+
+(Practiced: column-gap: 20px and row-gap: 15px separately, also gap: 20px shorthand)
+
+
+-------------------
+6) ALIGNMENT (Container-Level)
+-------------------
+These properties align ALL grid items within the container:
+
+- justify-items   → Aligns items horizontally (along the row axis)
+    Values: start | end | center | stretch (default)
+
+- align-items     → Aligns items vertically (along the column axis)
+    Values: start | end | center | stretch (default)
+
+(Practiced: align-items: center; and justify-items: center; to center all boxes)
+
+
+-------------------
+7) ALIGNMENT (Item-Level)
+-------------------
+These properties align a SINGLE grid item, overriding the container's alignment:
+
+- justify-self    → Horizontal alignment of one item
+- align-self      → Vertical alignment of one item
+
+(Practiced: align-self: center; and justify-self: center; on individual .box items)
+
+
+-------------------
+8) SPANNING GRID ITEMS (Placing Items Across Multiple Cells)
+-------------------
+This is one of Grid's most powerful features — making an item span multiple rows or columns.
+
+a) Column Spanning:
+   - grid-column-start: 1;  grid-column-end: 3;    → Spans from column line 1 to 3 (2 columns)
+   - grid-column: 1 / 3;                            → Shorthand for the above
+   - grid-column: 1 / 2;                            → Occupies just 1 column (line 1 to 2)
+
+b) Row Spanning:
+   - grid-row-start: 1;  grid-row-end: 3;           → Spans from row line 1 to 3 (2 rows)
+   - grid-row: 2 / 4;                               → Spans from row line 2 to 4 (2 rows)
+
+NOTE: Line numbers are the borders between cells, NOT the cells themselves.
+      A 3-column grid has 4 column lines: |1|col|2|col|3|col|4|
+
+(Practiced in the Header/Footer layout:
+   - header  → grid-column: 1/3  → spans full width across 2 columns
+   - footer  → grid-column: 1/3  → spans full width across 2 columns
+   - .right  → grid-row: 2/4     → spans 2 rows vertically)
+
+
+-------------------
+9) LAYOUT PRACTICED — Holy Grail Style
+-------------------
+Built a classic page layout using Grid:
+
+    +-----------------------------+
+    |          HEADER             |  ← grid-column: 1/3 (spans 2 cols)
+    +--------------+--------------+
+    |  LEFT TOP    |              |
+    +--------------+    RIGHT     |  ← grid-row: 2/4 (spans 2 rows)
+    |  LEFT BOTTOM |              |
+    +--------------+--------------+
+    |          FOOTER             |  ← grid-column: 1/3 (spans 2 cols)
+    +-----------------------------+
+
+Structure:
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 40% 40% 10%;
+    gap: 20px;
+    padding: 20px;
+
+
+-------------------
+10) ALSO REVISED TODAY
+-------------------
+a) Flexbox Layouts
+   - Reviewed flex-direction, justify-content, align-items
+   - Used calc() for dynamic height: height: calc(100% - 90px - 80px);
+   - Practiced nested flex containers (nav → flex, center → flex, bottom → flex)
+
+b) Semantic HTML Tags
+   - Used <main>, <nav>, <section>, <header>, <footer> instead of plain <div>s
+   - Same styling applies — semantic tags are just meaningful <div>s
+   - Benefits: accessibility, SEO, and cleaner/readable code
+
+
+-------------------
+QUICK CHEAT SHEET
+-------------------
+┌─────────────────────────────────────────────────┐
+│  CONTAINER PROPERTIES          │ ITEM PROPERTIES │
+│  ─────────────────────         │ ───────────────  │
+│  display: grid;                │ grid-column      │
+│  grid-template-columns        │ grid-row          │
+│  grid-template-rows           │ align-self        │
+│  gap / row-gap / column-gap   │ justify-self      │
+│  align-items                  │ grid-column-start │
+│  justify-items                │ grid-column-end   │
+│                               │ grid-row-start    │
+│                               │ grid-row-end      │
+└─────────────────────────────────────────────────┘

@@ -314,3 +314,39 @@ footer {
   background-color: #2e5f5f;
   grid-area: right-bottom;
 } */
+
+main{
+  height: 100%;
+  width: 100%;
+  background-color: azure;
+  display: grid;
+  padding: 20px;
+  gap: 10px;
+  grid-template-columns: 25% 25% 50%;
+  grid-template-rows: 10% 60% 30%;
+  grid-template-areas: 
+  "header header header"
+  "left-center left-center right"
+  "left-bottom1 left-bottom2 right"
+  ;
+}
+.header{
+  background-color: #eaeeee;
+  grid-area: header;
+}
+.left-center{
+  background-color: #d1dada;
+  grid-area: left-center;
+}
+.left-bottom1{
+  background-color: #bec4c4;
+  grid-area: left-bottom1;
+}
+.left-bottom2{
+  background-color: #a1b4b4;
+  grid-area: left-bottom2;
+}
+.right{
+  background-color: #8b9c9c;
+  grid-area: right;
+}

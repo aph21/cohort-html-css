@@ -1,0 +1,58 @@
+# Day 4: CSS Fundamentals & Box Model
+
+## 1. Adding CSS to HTML
+There are 3 ways to apply CSS to HTML elements:
+- **External CSS**: Written in a separate `.css` file and linked using `<link rel="stylesheet" href="style.css" />` in the `<head>`.
+- **Internal CSS**: Written inside a `<style>` tag within the HTML `<head>`.
+- **Inline CSS**: Written directly on an HTML element using the `style` attribute.
+*Specificity Rule:* Inline CSS has the highest priority.
+
+## 2. Client-Server Architecture & APIs
+- **Client**: The user side (frontend) that sends requests and receives information.
+- **Server**: The system (backend) programmed to accept requests and provide responses.
+- **API (Application Programming Interface)**: Acts as a bridge between the client and the server.
+  *Analogy:* Like a waiter in a restaurant who takes your order (request) to the kitchen (server) and brings back your food (response).
+
+## 3. CSS Selectors: ID vs. Class
+- **ID (`#`)**: Used to target a single, unique element on the page (e.g., `#hero { color: pink; }`).
+- **Class (`.`)**: Used to target multiple elements to apply the same properties to them (e.g., `.villain { text-decoration: underline; }`).
+
+## 4. Sizing Units: px vs. %
+- **Pixels (`px`)**: A fixed, absolute unit. If a child element is set to `100px`, changing the parent's size will not affect the child's size.
+- **Percentage (`%`)**: A relative unit. The child's size is calculated based on its parent's size. If the parent grows or shrinks, the child adjusts accordingly.
+
+## 5. Space & The Box Model (Margin vs. Padding)
+- **Margin**: The imaginary space *outside* the element. It is used to move the element around the screen or push other elements away.
+  - Sub-properties: `margin-top`, `margin-right`, `margin-bottom`, `margin-left`.
+- **Padding**: The imaginary space *inside* the element (between the border and the content itself).
+- **CSS Reset (`*`)**: A common practice to remove browser defaults:
+  ```css
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  ```
+- **What is `box-sizing: border-box;`?** It ensures that any padding and borders you add are included within the element's specified width and height, preventing the element from expanding unexpectedly.
+
+## 6. Interactive Styles & Layouts
+- **Pseudo-classes**: States like `:hover` (when the mouse is over an element) and `:active` (when the element is being clicked).
+- **Transitions**: E.g., `transition: all ease 0.5s;` makes state changes (like hovering a button) smooth rather than instant.
+- **Positioning**: `relative` and `absolute` properties are used for taking elements out of the normal document flow and placing them precisely.
+- **Cubic Bezier**: Used to define custom animation/transition speed curves (often explored via visualization tools online).
+
+## 7. Z-Index
+- **Why we use it:** When elements overlap (especially when using `position: absolute` or `relative`), `z-index` controls their stacking order (which element appears in front).
+- **How we use it:** Elements with a higher `z-index` value appear "on top of" elements with a lower value.
+  - Example: An element with `z-index: 9999;` will show up in front of an element with `z-index: 100;`.
+  - *Note:* `z-index` only works on elements that have a `position` value other than `static` (like `absolute`, `relative`, `fixed`, or `sticky`).
+
+## 8. CSS Transforms (`translate`)
+- **What it does:** `transform: translate` moves an element from its current position along the X (horizontal) or Y (vertical) axis. The percentages are based on the element's *own* size.
+- **`transform: translateX()`:** Moves the element left or right.
+  - `translateX(50%)`: Moves it forward by 50% of its width.
+  - `translateX(-10%)`: Moves it backward (left) by 10% of its width.
+- **`transform: translateY()`:** Works exactly the same way, but moves the element up (negative values) or down (positive values) along the Y-axis.
+- **`transform: translate(-50%, -50%);`** 
+  - **Why we use it:** It is the standard trick used to perfectly center an element inside its parent container.
+  - **How it works:** When combined with `position: absolute; top: 50%; left: 50%;`, the top-left corner of the element is pushed to the center of the screen. `translate(-50%, -50%)` pulls the element back by half its own width and height, placing its true center dead in the middle of the screen!

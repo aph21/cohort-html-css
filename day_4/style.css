@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: hsl(0, 0%, 0%);
+  color: white;
+}
+/* h1{
+    color: green;
+}
+#hero{
+    color: pink;
+}
+#zero{
+    background-color: blue;
+    color: yellow;
+}
+.villain{
+    text-decoration: underline 2px greenyellow;
+} */
+/* #box{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    margin-left: 40px;
+}
+/* here inner is child of box */
+/* #box #inner{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+
+} */
+/* #box2{
+    height: 200px;
+    width: 200px;
+    background-color: royalblue;
+
+}  */
+
+/* Padding */
+/* .box{
+    height: 300px;
+    width: 300px;
+    background-color: royalblue;
+    margin: 20px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.box .inner{
+    height: 150px;
+    width: 150px;
+    background-color: red;
+  
+}
+button{
+    margin: 20px;
+    color: white;
+    background-color: royalblue;
+    border: none;
+    border-radius: 10px;
+    padding: 10px; */
+/* } */
+
+/* button{
+    margin: 30px;
+    background-color: #010101;
+    color: aliceblue;
+    padding: 20px 30px;
+    border: 2px solid white;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all ease 0.5s;
+}
+button:hover{
+    background-color: #fff;
+    color: #010101;
+}
+button:active{
+    background-color: wheat;
+    color: #010101;
+}
+#box{
+    background-color: crimson;
+    height: 200px;
+    width: 200px;
+} */
+
+/* #box1 {
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+}
+#box2 {
+  height: 200px;
+  width: 200px;
+  background-color: navy;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  z-index: 100;
+}
+#box3 {
+  height: 200px;
+  width: 200px;
+  background-color: green;
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  z-index: 9999;
+} */
+
+/* #box1 {
+  height: 200px;
+  width: 200px;
+  background-color: brown;
+  position: absolute;
+  font-size: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

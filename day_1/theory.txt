@@ -1,0 +1,672 @@
+================================================================
+                  DAY 1 - HTML FUNDAMENTALS
+================================================================
+
+1. THE WEB TRIO
+----------------------------------------------------------------
+  HTML  -> Structure   (contains all the data/content)
+  CSS   -> Styling
+  JS    -> Functionality
+
+
+2. HISTORY OF THE WEB
+----------------------------------------------------------------
+  - Web was invented after World War II (~1950s)
+
+  Web 1.0  -> Text only (AKA ARPANET)
+  Web 2.0  -> HTML, HTTP and URL by Tim Berners-Lee
+               includes: Text, Image, Audio, Video
+  Web 3.0  -> AR, VR and Blockchain
+
+
+3. WHAT IS HTML?
+----------------------------------------------------------------
+  HTML = Hyper Text Markup Language
+  - File: index.html
+  - Boilerplate shortcut: Shift + !
+
+  Boilerplate structure:
+  ----------------------
+  <!DOCTYPE html>          -> tells which HTML version we are using
+  <html lang="en">         -> root tag, contains everything
+    <head></head>          -> contains info about the website (meta, title, links)
+    <body></body>          -> contains the visible content
+  </html>
+
+
+4. TEXT RELATED TAGS
+----------------------------------------------------------------
+  Headings     -> <h1>  <h2>  <h3>  <h4>  <h5>  <h6>
+  Paragraph    -> <p></p>
+  Bold         -> <b></b>  or  <strong></strong>
+  Italic       -> <i></i>  or  <em></em>
+  Underline    -> <u></u>
+  Subscript    -> <sub></sub>      example: H<sub>2</sub>O
+  Superscript  -> <sup></sup>      example: 2<sup>2</sup> = 4
+
+
+5. SELF-CLOSING TAGS
+----------------------------------------------------------------
+  <br>  -> line break (breaks sentence at a specific word)
+  <hr>  -> horizontal rule (draws a line to separate content)
+
+
+6. LISTS
+----------------------------------------------------------------
+
+  a) Ordered List -> <ol></ol>
+     Attributes:
+       type    -> changes numbering style
+                  type="1"  -> 1, 2, 3       (default)
+                  type="A"  -> A, B, C
+                  type="a"  -> a, b, c
+                  type="I"  -> I, II, III     (Roman uppercase)
+                  type="i"  -> i, ii, iii     (Roman lowercase)
+
+       start   -> starts list from a custom number
+                  <ol start="5"> starts at 5, then 6, 7...
+
+       reversed -> counts backwards (boolean attribute, no value needed)
+                  <ol reversed>
+
+       value (on <li>) -> jumps to a specific number mid-list
+                  <li value="10"> -> overrides number to 10
+
+  b) Unordered List -> <ul></ul>
+     Attributes:
+       type    -> changes bullet style
+                  type="disc"    -> filled circle (default)
+                  type="circle"  -> hollow circle
+                  type="square"  -> filled square
+
+  c) List Item -> <li></li>
+     (used inside both <ol> and <ul>)
+
+
+7. ATTRIBUTES
+----------------------------------------------------------------
+  - Provide additional info about an HTML element
+  - Always placed inside the opening tag
+  - Written as key="value" pairs
+
+  Syntax:
+    <tagname attribute="value">Content</tagname>
+
+  Common attributes (work on most tags):
+    id        -> unique identifier       <p id="intro">
+    class     -> group elements          <p class="highlight">
+    style     -> inline CSS              <p style="color: red;">
+    href      -> link destination        <a href="url">
+    src       -> file source             <img src="photo.jpg">
+    alt       -> alternate text          <img alt="description">
+    type      -> input/list type         <input type="email">
+    target    -> where to open link      <a target="_blank">
+    disabled  -> disables element        <button disabled>
+    placeholder -> hint inside input     <input placeholder="Enter name">
+
+8. ANCHOR TAG  <a>
+================================================================
+  - Used to create hyperlinks (clickable links)
+  - Links to: other pages, websites, files, emails, or sections
+
+  Syntax:
+    <a href="url">Link Text</a>
+
+  Attributes:
+    href      -> destination of the link (URL or path)
+                 <a href="https://google.com">Google</a>
+                 <a href="about.html">About Page</a>       (same site)
+                 <a href="#section1">Jump to section</a>   (same page)
+                 <a href="mailto:a@gmail.com">Email Me</a> (email)
+
+    target    -> where to open the link
+                 target="_self"   -> same tab (default)
+                 target="_blank"  -> new tab
+
+    title     -> tooltip text on hover
+                 <a href="url" title="Go to Google">Google</a>
+
+    download  -> downloads the file instead of opening it (boolean)
+                 <a href="file.pdf" download>Download PDF</a>
+
+  Examples:
+    <!-- external link in new tab -->
+    <a href="https://google.com" target="_blank">Open Google</a>
+
+    <!-- internal page link -->
+    <a href="about.html">About Us</a>
+
+    <!-- jump to a section on same page -->
+    <a href="#contact">Go to Contact</a>
+    <h2 id="contact">Contact</h2>
+
+    <!-- email link -->
+    <a href="mailto:hello@example.com">Send Email</a>
+
+================================================================
+
+9. DETAILS & SUMMARY TAGS
+================================================================
+  - <details> creates a collapsible/expandable widget (accordion)
+  - <summary> is the visible clickable heading inside <details>
+  - Clicking the summary toggles the content open/closed
+  - Works without any JavaScript — pure HTML!
+
+  Syntax:
+    <details>
+      <summary>Click to expand</summary>
+      <p>Hidden content shown when expanded.</p>
+    </details>
+
+  Attributes on <details>:
+    open      -> boolean attribute, shows content expanded by default
+                 <details open>
+
+  Notes:
+    - Everything inside <details> EXCEPT <summary> is hidden by default
+    - <summary> must be the FIRST child of <details>
+    - If no <summary> is given, browser shows "Details" as default label
+    - You can put any content inside: <p>, <ul>, <img>, etc.
+
+  Examples:
+    <!-- basic collapsible -->
+    <details>
+      <summary>What is HTML?</summary>
+      <p>HTML stands for Hyper Text Markup Language.</p>
+    </details>
+
+    <!-- open by default -->
+    <details open>
+      <summary>Today's Weather</summary>
+      <p>Sunny with a high of 32°C.</p>
+    </details>
+
+    <!-- with a list inside -->
+    <details>
+      <summary>Topics Covered</summary>
+      <ul>
+        <li>HTML Basics</li>
+        <li>CSS Styling</li>
+        <li>JavaScript</li>
+      </ul>
+    </details>
+
+================================================================
+
+10. IMAGE TAG  <img>
+================================================================
+  - Used to embed images in a webpage
+  - Self-closing tag (no closing tag needed)
+
+  Syntax:
+    <img src="path/to/image.jpg" alt="description">
+
+  Attributes:
+    src       -> source/path of the image (required)
+                 <img src="photo.jpg">               (local file)
+                 <img src="https://example.com/img.jpg"> (URL)
+
+    alt       -> alternate text if image fails to load (required for accessibility)
+                 <img alt="a girl smiling">
+
+    width     -> sets width (in px or %)
+    height    -> sets height (in px or %)
+                 <img src="photo.jpg" width="300" height="200">
+
+    loading   -> controls when image loads
+                 loading="lazy"   -> loads only when in view (better performance)
+                 loading="eager"  -> loads immediately (default)
+
+  Examples:
+    <!-- local image -->
+    <img src="cat.jpg" alt="a cute cat" width="400">
+
+    <!-- image from URL -->
+    <img src="https://i.pinimg.com/photo.jpg" alt="girl" width="300">
+
+    <!-- lazy loaded image -->
+    <img src="banner.jpg" alt="banner" loading="lazy">
+
+
+11. AUDIO TAG  <audio>
+================================================================
+  - Used to embed audio/sound files in a webpage
+  - NOT a self-closing tag
+
+  Syntax:
+    <audio src="audio.mp3" controls></audio>
+
+  Attributes:
+    src       -> path to the audio file
+    controls  -> shows play/pause/volume controls (boolean)
+    autoplay  -> plays automatically when page loads (boolean)
+    loop      -> repeats audio when it ends (boolean)
+    muted     -> starts muted (boolean)
+
+  Supported formats: .mp3  .ogg  .wav
+
+  Examples:
+    <!-- basic audio player -->
+    <audio src="song.mp3" controls></audio>
+
+    <!-- autoplay + loop -->
+    <audio src="bg-music.mp3" autoplay loop muted></audio>
+
+    <!-- multiple sources for browser compatibility -->
+    <audio controls>
+      <source src="song.mp3" type="audio/mpeg">
+      <source src="song.ogg" type="audio/ogg">
+      Your browser does not support audio.
+    </audio>
+
+
+12. VIDEO TAG  <video>
+================================================================
+  - Used to embed video files in a webpage
+  - NOT a self-closing tag
+
+  Syntax:
+    <video src="video.mp4" controls></video>
+
+  Attributes:
+    src       -> path to the video file
+    controls  -> shows play/pause/volume/fullscreen controls (boolean)
+    autoplay  -> plays automatically on page load (boolean)
+    loop      -> repeats video when it ends (boolean)
+    muted     -> starts muted (required for autoplay in most browsers)
+    poster    -> image shown before video plays (like a thumbnail)
+    width     -> sets width of the video player
+    height    -> sets height of the video player
+
+  Supported formats: .mp4  .webm  .ogg
+
+  Examples:
+    <!-- basic video player -->
+    <video src="movie.mp4" controls width="600"></video>
+
+    <!-- autoplay (must be muted for browsers to allow it) -->
+    <video src="clip.mp4" autoplay muted loop></video>
+
+    <!-- with poster thumbnail -->
+    <video src="movie.mp4" controls poster="thumbnail.jpg" width="600"></video>
+
+    <!-- multiple sources for browser compatibility -->
+    <video controls width="600">
+      <source src="movie.mp4" type="video/mp4">
+      <source src="movie.webm" type="video/webm">
+      Your browser does not support video.
+    </video>
+
+================================================================
+
+13. TABLE TAG  <table>
+================================================================
+  - Used to display data in rows and columns
+  - Made up of multiple tags working together
+
+  Tags used inside a table:
+    <table>    -> the main wrapper for the whole table
+    <thead>    -> groups the header row(s)
+    <tbody>    -> groups the body/data rows
+    <tfoot>    -> groups the footer row(s)
+    <tr>       -> table row (goes inside thead / tbody / tfoot)
+    <th>       -> table header cell (bold + centered by default)
+    <td>       -> table data cell (regular content)
+
+  Basic Structure:
+    <table>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+        </tr>
+      </tbody>
+    </table>
+
+  Attributes on <table>:
+    border    -> adds border around table (old way, use CSS instead)
+                 <table border="1">
+
+  Attributes on <td> and <th>:
+    colspan   -> merges cells horizontally (across columns)
+                 <td colspan="2">Spans 2 columns</td>
+
+    rowspan   -> merges cells vertically (across rows)
+                 <td rowspan="3">Spans 3 rows</td>
+
+  Examples:
+
+    <!-- basic student marks table -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anjana</td>
+          <td>Math</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>Prabha</td>
+          <td>Science</td>
+          <td>88</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Average</td>
+          <td>91.5</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- colspan example -->
+    <table border="1">
+      <tr>
+        <th colspan="3">Student Report</th>   <!-- spans all 3 columns -->
+      </tr>
+      <tr>
+        <td>Anjana</td>
+        <td>Math</td>
+        <td>95</td>
+      </tr>
+    </table>
+
+    <!-- rowspan example -->
+    <table border="1">
+      <tr>
+        <td rowspan="2">Anjana</td>   <!-- this cell spans 2 rows -->
+        <td>Math</td>
+        <td>95</td>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>88</td>
+      </tr>
+    </table>
+
+================================================================
+
+14. FORM TAG  <form>
+================================================================
+  - Used to collect user input and send it somewhere
+  - A container for input elements
+
+  Syntax:
+    <form action="url" method="post">
+      <!-- input fields go here -->
+    </form>
+
+  Attributes on <form>:
+    action    -> URL where form data is sent on submit
+                 <form action="/submit">
+    method    -> how data is sent
+                 method="get"   -> data sent in URL (visible, for search)
+                 method="post"  -> data sent in body (hidden, for login/signup)
+
+  ---------------------------------------------------------------
+  A) <input> tag  (self-closing)
+  ---------------------------------------------------------------
+    - Most commonly used form element
+    - type attribute decides what kind of input it is
+
+    type values:
+      type="text"      -> single line text input
+      type="password"  -> hides characters while typing
+      type="email"     -> validates email format
+      type="number"    -> only numbers allowed
+      type="tel"       -> telephone number
+      type="date"      -> date picker
+      type="checkbox"  -> tick box (select multiple)
+      type="radio"     -> round button (select only one from group)
+      type="file"      -> upload a file
+      type="range"     -> a slider
+      type="color"     -> color picker
+      type="submit"    -> submit button
+      type="reset"     -> resets all form fields
+      type="hidden"    -> invisible field (sends data without showing it)
+
+    Other useful attributes on <input>:
+      name          -> identifies the field when data is sent (required)
+      id            -> links to a <label>
+      placeholder   -> hint text inside the field
+      value         -> default/pre-filled value
+      required      -> makes field mandatory (boolean)
+      disabled      -> disables the field (boolean)
+      checked       -> pre-checks checkbox or radio (boolean)
+      min / max     -> min and max for number/date/range
+      maxlength     -> max characters allowed
+
+  ---------------------------------------------------------------
+  B) <label> tag
+  ---------------------------------------------------------------
+    - Describes what an input field is for
+    - Clicking the label focuses the linked input
+    - Link label to input using: for="input-id"
+
+    <label for="username">Name:</label>
+    <input type="text" id="username" name="username">
+
+  ---------------------------------------------------------------
+  C) <textarea> tag
+  ---------------------------------------------------------------
+    - Multi-line text input (for longer messages)
+    - NOT self-closing
+
+    <textarea name="message" rows="5" cols="40">
+      Default text here
+    </textarea>
+
+    Attributes: rows, cols, placeholder, required, disabled
+
+  ---------------------------------------------------------------
+  D) <select> and <option> tags
+  ---------------------------------------------------------------
+    - Creates a dropdown menu
+
+    <select name="city">
+      <option value="mng">Mangalore</option>
+      <option value="blr" selected>Bangalore</option>
+      <option value="mum">Mumbai</option>
+    </select>
+
+    selected -> pre-selects an option (boolean on <option>)
+    multiple -> allows selecting multiple options (boolean on <select>)
+
+  ---------------------------------------------------------------
+  E) <button> tag
+  ---------------------------------------------------------------
+    - Clickable button
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button">Just a button</button>
+
+  ---------------------------------------------------------------
+  Full Example:
+  ---------------------------------------------------------------
+    <form action="/register" method="post">
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter email" required>
+
+      <label for="pass">Password:</label>
+      <input type="password" id="pass" name="password" required>
+
+      <label for="gender">Gender:</label>
+      <input type="radio" name="gender" value="female"> Female
+      <input type="radio" name="gender" value="male"> Male
+
+      <label for="city">City:</label>
+      <select id="city" name="city">
+        <option value="mng">Mangalore</option>
+        <option value="blr">Bangalore</option>
+      </select>
+
+      <label for="msg">Message:</label>
+      <textarea id="msg" name="message" rows="4" placeholder="Write here..."></textarea>
+
+      <button type="submit">Register</button>
+      <button type="reset">Clear</button>
+
+    </form>
+
+================================================================
+
+15. SEO - Search Engine Optimization
+================================================================
+  - SEO = making your website rank higher on Google/Bing etc.
+  - HTML plays a big role in SEO through proper use of tags
+  - All SEO-related tags go inside <head></head>
+
+  ---------------------------------------------------------------
+  A) <title> tag  (MOST IMPORTANT)
+  ---------------------------------------------------------------
+    - Sets the page title shown in browser tab and Google results
+    - Keep it: clear, unique, 50-60 characters max
+
+    <title>Learn HTML - Complete Guide for Beginners</title>
+
+  ---------------------------------------------------------------
+  B) <meta> tags
+  ---------------------------------------------------------------
+    Meta tags provide info about the page to search engines.
+    They are self-closing and go inside <head>.
+
+    1. charset  -> defines character encoding (always include)
+       <meta charset="UTF-8">
+
+    2. viewport -> makes site responsive on mobile (always include)
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    3. description -> short summary shown in Google search results
+                      keep it 150-160 characters max
+       <meta name="description" content="Learn HTML from scratch with
+       simple examples and clear explanations for beginners.">
+
+    4. keywords -> (less important today, Google mostly ignores it)
+       <meta name="keywords" content="HTML, CSS, web development, beginners">
+
+    5. author -> who wrote the page
+       <meta name="author" content="Anjana Hegde">
+
+    6. robots -> tells search engines what to do with the page
+       <meta name="robots" content="index, follow">     -> index and follow links (default)
+       <meta name="robots" content="noindex, nofollow"> -> don't index this page
+
+  ---------------------------------------------------------------
+  C) Semantic HTML Tags  (VERY IMPORTANT for SEO)
+  ---------------------------------------------------------------
+    - Semantic tags tell the browser AND search engines
+      what role each section of the page plays
+    - Using <div> everywhere is bad for SEO
+    - Use the right tag for the right content
+
+    <header>    -> top section (logo, nav bar)
+    <nav>       -> navigation links
+    <main>      -> main content of the page (only one per page)
+    <section>   -> a thematic section of content
+    <article>   -> self-contained content (blog post, news article)
+    <aside>     -> side content (ads, related links)
+    <footer>    -> bottom section (copyright, links)
+
+    Example layout:
+    <body>
+      <header>
+        <nav>...</nav>
+      </header>
+      <main>
+        <section>
+          <article>...</article>
+        </section>
+        <aside>...</aside>
+      </main>
+      <footer>...</footer>
+    </body>
+
+  ---------------------------------------------------------------
+  D) Heading Tags (h1 - h6)  (IMPORTANT for SEO)
+  ---------------------------------------------------------------
+    - Google reads headings to understand page structure
+    - Rules:
+        * Use only ONE <h1> per page (main topic)
+        * <h2> for subtopics, <h3> for sub-subtopics
+        * Don't skip levels (don't go h1 -> h4)
+
+    <h1>Complete HTML Tutorial</h1>       <- ONE per page
+    <h2>What is HTML?</h2>
+    <h3>History of HTML</h3>
+
+  ---------------------------------------------------------------
+  E) <link> tag  (for canonical + favicon)
+  ---------------------------------------------------------------
+    canonical -> tells Google which is the "official" URL
+                 prevents duplicate content issues
+    <link rel="canonical" href="https://yoursite.com/page">
+
+    favicon -> small icon in browser tab
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    stylesheet -> link CSS file
+    <link rel="stylesheet" href="style.css">
+
+  ---------------------------------------------------------------
+  F) Open Graph Tags  (for Social Media sharing)
+  ---------------------------------------------------------------
+    - Controls how your page looks when shared on
+      Facebook, WhatsApp, LinkedIn etc.
+    - Uses meta tags with property= instead of name=
+
+    <meta property="og:title"       content="Learn HTML">
+    <meta property="og:description" content="A beginner's guide to HTML">
+    <meta property="og:image"       content="https://yoursite.com/preview.jpg">
+    <meta property="og:url"         content="https://yoursite.com/html-guide">
+    <meta property="og:type"        content="website">
+
+  ---------------------------------------------------------------
+  G) <img> alt attribute  (SEO for images)
+  ---------------------------------------------------------------
+    - Google reads alt text to understand what an image is
+    - Always write descriptive alt text
+
+    Bad:   <img src="img1.jpg" alt="image">
+    Good:  <img src="cat.jpg" alt="a white cat sitting on a couch">
+
+  ---------------------------------------------------------------
+  Full <head> SEO boilerplate:
+  ---------------------------------------------------------------
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Learn HTML from scratch with simple examples.">
+      <meta name="author" content="Anjana Hegde">
+      <meta name="robots" content="index, follow">
+
+      <!-- Open Graph -->
+      <meta property="og:title"       content="Learn HTML">
+      <meta property="og:description" content="A beginner's guide to HTML">
+      <meta property="og:image"       content="https://yoursite.com/preview.jpg">
+      <meta property="og:url"         content="https://yoursite.com">
+
+      <link rel="canonical" href="https://yoursite.com/html-guide">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="style.css">
+
+      <title>Learn HTML - Complete Beginner's Guide</title>
+    </head>
+
+================================================================

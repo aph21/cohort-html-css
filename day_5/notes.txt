@@ -1,0 +1,269 @@
+============================================================
+  DAY 5 NOTES — CSS Positioning & Transform
+============================================================
+
+1. POSITION: RELATIVE
+---------------------
+- Adding position: relative to an element does nothing visually.
+- But it secretly becomes a REFERENCE POINT (boundary) for any
+  absolute children inside it.
+- Rule: Always put this on the PARENT.
+
+2. POSITION: ABSOLUTE
+---------------------
+- The element is ripped out of the normal document flow.
+- Other elements ignore it (it floats above/over them).
+- It searches for the nearest ancestor with position: relative.
+  → Found? Positions itself inside THAT element.
+  → Not found? Falls back to the browser window (body).
+- Use top, right, bottom, left to control where it sits.
+
+  Example:
+    .parent { position: relative; }
+    .child  { position: absolute; top: 0; right: 0; }
+  → Child sticks to the top-right corner of .parent.
+
+3. TRANSFORM: TRANSLATE
+-----------------------
+- Moves an element VISUALLY without affecting document flow.
+  (Unlike margin, it does NOT push other elements around.)
+- translateX(value) → moves LEFT or RIGHT
+- translateY(value) → moves UP or DOWN
+- translate(x, y)   → moves BOTH at once
+- % unit = percentage of the ELEMENT ITSELF (not the parent).
+
+  Positive X  → moves RIGHT
+  Negative X  → moves LEFT
+  Positive Y  → moves DOWN
+  Negative Y  → moves UP
+
+4. CLASSIC TRICK: CENTER A BOX INSIDE A BOX
+--------------------------------------------
+  .parent { position: relative; }
+  .child  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  Why it works:
+  → top:50% + left:50% moves the child's TOP-LEFT corner to center.
+  → translate(-50%,-50%) pulls it back by half its OWN size.
+  → Result: perfectly centered!
+
+5. BADGE CORNER TRICK (real-world pattern)
+------------------------------------------
+  Top-right corner, half outside:
+    top: 0; right: 0;
+    transform: translate(50%, -50%);
+
+  Bottom-left corner, half outside:
+    bottom: 0; left: 0;
+    transform: translate(-50%, 50%);
+
+  Logic: translate() pushes the badge OUTWARD from the corner.
+  Direction depends on which corner you're working with.
+
+============================================================
+  QUICK REFERENCE
+============================================================
+
+  | Situation                        | Result                     |
+  | absolute, no relative parent     | uses browser window        |
+  | absolute, relative parent exists | stays inside parent        |
+  | transform: translate             | ghost move, no layout shift|
+  | % in translate                   | % of the element itself    |
+
+============================================================
+  TRANSFORM: ROTATE
+============================================================
+
+- Rotates an element by a given angle.
+- Does NOT affect document flow (just like translate).
+
+  transform: rotate(45deg);     → rotates clockwise by 45°
+  transform: rotate(-30deg);    → rotates counter-clockwise by 30°
+
+  Axis-specific rotations (3D):
+  transform: rotateX(70deg);    → tilts FORWARD/BACKWARD (like a door hinge at top)
+  transform: rotateY(100deg);   → spins LEFT/RIGHT (like a revolving door)
+  transform: rotateZ(45deg);    → same as rotate() — spins FLAT on screen
+
+  Note: rotateX / rotateY look flat unless you add PERSPECTIVE (see below).
+
+============================================================
+  PERSPECTIVE PROPERTY
+============================================================
+
+- Gives depth to 3D transforms (rotateX, rotateY, etc.)
+- Without it, 3D rotations look flat / 2D.
+- Lower value = MORE dramatic 3D effect.
+- Higher value = subtle, far-away 3D effect.
+
+  body { perspective: 1000px; }
+
+  ⚠️ GOTCHA: perspective on a parent (like body) creates a
+  NEW CONTAINING BLOCK. This BREAKS position: fixed on any
+  child inside — fixed starts acting like absolute!
+
+  FIX: Apply perspective only on the specific element that
+  needs 3D, not on body.
+
+  Example (safe way):
+    .card { perspective: 800px; }
+    .card-inner { transform: rotateY(30deg); }
+
+============================================================
+  TRANSFORM: SKEW
+============================================================
+
+- Tilts/slants an element along X or Y axis.
+- Think of it like pushing the top of a rectangle sideways.
+
+  transform: skewX(20deg);      → slants horizontally
+  transform: skewY(10deg);      → slants vertically
+  transform: skew(20deg, 10deg);→ both at once
+
+  Positive skewX → top moves LEFT, bottom moves RIGHT
+  Negative skewX → opposite direction
+
+  Use case: creating parallelogram shapes, slanted sections,
+  or stylistic text effects.
+
+============================================================
+  NTH-CHILD SELECTOR
+============================================================
+
+- Selects elements based on their POSITION among siblings.
+- Counting starts from 1, not 0.
+
+  :nth-child(2)     → selects the 2nd child
+  :nth-child(2n)    → selects every EVEN child (2, 4, 6...)
+  :nth-child(2n-1)  → selects every ODD child (1, 3, 5...)
+  :nth-child(odd)   → same as 2n-1
+  :nth-child(even)  → same as 2n
+  :nth-child(3n)    → every 3rd child (3, 6, 9...)
+
+  Example:
+    .box:nth-child(2)    { background-color: yellow; }
+    .box:nth-child(2n)   { background-color: rosybrown; }
+    .box:nth-child(2n-1) { background-color: orange; }
+
+  ⚠️ NOTE: nth-child counts ALL siblings, not just siblings
+  with the same class. If there's a <h1> before your .box divs,
+  the count includes the <h1> too.
+  → Use :nth-of-type() if you want to count only same-tag elements.
+
+============================================================
+  POSITION: FIXED
+============================================================
+
+- Element is removed from normal flow.
+- Positioned relative to the VIEWPORT (browser window).
+- It STAYS IN PLACE even when you scroll the page.
+- Use top, right, bottom, left to place it.
+
+  Example:
+    #box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  → Box stays dead-center on screen, no matter how much you scroll.
+
+  Common uses: sticky navbars, floating buttons, modals.
+
+  ⚠️ BREAKS when any ancestor has: transform, perspective,
+  filter, or will-change set. Fixed then acts like absolute!
+
+============================================================
+  POSITION: STICKY
+============================================================
+
+- A HYBRID of relative and fixed.
+- Element behaves like RELATIVE (normal flow) until you scroll
+  past a threshold → then it STICKS like fixed.
+- You MUST set at least one of: top, bottom, left, right.
+  (Without it, sticky does nothing!)
+
+  Example:
+    #box {
+      position: sticky;
+      top: 50%;
+    }
+  → Box scrolls normally with page, but once its top edge
+    reaches 50% of the viewport, it STICKS there.
+
+  ⚠️ IMPORTANT: sticky only works within its PARENT container.
+  Once the parent scrolls out of view, the sticky child goes
+  with it. The parent is its boundary.
+
+  Common uses: sticky headers, sidebar navigation, table headers.
+
+============================================================
+  POSITION COMPARISON TABLE
+============================================================
+
+  | Position  | In flow? | Positioned to       | Scrolls? |
+  |-----------|----------|---------------------|----------|
+  | static    | YES      | nothing (default)   | YES      |
+  | relative  | YES      | itself (its origin) | YES      |
+  | absolute  | NO       | nearest rel. parent | YES      |
+  | fixed     | NO       | viewport            | NO       |
+  | sticky    | YES*     | viewport (on stick) | STICKS   |
+
+  * sticky is in flow until threshold, then behaves fixed.
+
+============================================================
+  FLEX PROPERTY (FLEXBOX)
+============================================================
+
+- A 1-dimensional layout system (row OR column at a time).
+- Apply display: flex on the PARENT (container).
+- Children become flex items automatically.
+
+  .container {
+    display: flex;
+  }
+
+  KEY PARENT PROPERTIES:
+  ----------------------
+  flex-direction:    → row (default) | column | row-reverse | column-reverse
+  justify-content:   → aligns items on the MAIN axis
+                       flex-start | center | flex-end | space-between | space-around | space-evenly
+  align-items:       → aligns items on the CROSS axis
+                       flex-start | center | flex-end | stretch (default) | baseline
+  flex-wrap:         → nowrap (default) | wrap | wrap-reverse
+  gap:               → spacing between items (e.g., gap: 10px)
+
+  MAIN axis vs CROSS axis:
+  → flex-direction: row    → main = horizontal, cross = vertical
+  → flex-direction: column → main = vertical,   cross = horizontal
+
+  KEY CHILD PROPERTIES:
+  ---------------------
+  flex-grow:    → how much extra space this item should take (default: 0)
+  flex-shrink:  → how much this item should shrink when space is tight (default: 1)
+  flex-basis:   → starting size before grow/shrink kicks in
+  flex:         → shorthand: flex: grow shrink basis (e.g., flex: 1 → takes equal space)
+  align-self:   → overrides align-items for this ONE item
+
+  Example (center everything):
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  → All children are perfectly centered on screen.
+
+  Example (space items equally):
+    .nav {
+      display: flex;
+      justify-content: space-between;
+    }
+  → First item on left, last item on right, rest evenly spaced.
+
+============================================================

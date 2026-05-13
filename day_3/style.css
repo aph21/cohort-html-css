@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #000;
+}
+html,
+body{
+    height: 100%;
+    width: 100%;
+}
+h1{
+    color: rgb(45, 77, 242);
+    background-color: #fff;
+}
+div{
+    height: 200px;
+    width: 200px;
+    /* background-color: greenyellow; */
+    /* background: linear-gradient(to right bottom, orange, white, green); */
+    /* background: radial-gradient(white, blue); */
+    background-image: url("https://i.pinimg.com/736x/a4/b2/0f/a4b20fb355ef9bdc331666c8fe5e7d45.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* html is not what you think - documentation */

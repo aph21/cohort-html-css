@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #010101;
+  color: aliceblue;
+}
+/* body {
+  perspective: 1000px;
+} */
+/* .parent {
+  height: 400px;
+  width: 400px;
+  background-color: lightblue;
+  position: relative;
+}
+/* .child{
+    height: 100px;
+    width: 100px;
+    background-color: crimson;
+    position: absolute;
+    top: 0;
+    right: 0;
+} */
+/* .child{
+    height: 100px;
+    width: 100px;
+    background-color: crimson;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+ } */
+/* .child {
+  height: 100px;
+  width: 100px;
+  background-color: crimson;
+  /* margin-left: 100px; */
+/* transform: translateX(100px);
+}  */
+/* .card{
+  margin: 40px;
+  height: 200px;
+  width: 300px;
+  background-color: royalblue;
+  position: relative;
+  overflow: visible;
+} */
+/* .badge{
+  height: 30px;
+  width: 60px;
+  padding: 10px;
+  text-align: center;
+  background: crimson;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%,-50%);
+} */
+/* .badge{
+  height: 30px;
+  width: 60px;
+  padding: 10px;
+  text-align: center;
+  background: crimson;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%,50%);
+} */
+/* #box {
+  height: 200px;
+  width: 200px;
+  background-color: royalblue;
+  position: absolute;
+  top: 30%;
+  left: 40%; */
+/* transform: rotateX(70deg); */
+/* transform: rotateY(100deg); */
+/* } */
+
+/* .box {
+  height: 200px;
+  width: 200px;
+  background-color: rebeccapurple;
+  border: 2px solid white;
+} */
+/* #hero{
+  background-color: royalblue;
+} */
+/* .box:nth-child(2) {
+  background-color: yellow;
+}
+.box:nth-child(2n) {
+  background-color: rosybrown;
+}
+.box:nth-child(2n-1) {
+  background-color: orange;
+} */
+/* .page{
+  height: 100%;
+  width: 100%;
+  background-color: royalblue;
+}
+.page:nth-child(2){
+  background-color: rgb(6, 57, 209);
+}
+.page:nth-child(3){
+  background-color: rgb(10, 43, 140);
+}
+.page:nth-child(4){
+  background-color: rgb(3, 20, 71);
+} */
+/* #box{
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+/* #box{
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+/* .parent {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(2, 2, 39);
+  display: flex;
+  flex-direction: column;
+}
+.child1 {
+  height: 100px;
+  width: 100px;
+  background-color: yellowgreen;
+}
+.child2 {
+  height: 100px;
+  width: 100px;
+  background-color: crimson;
+}
+.child3 {
+  height: 100px;
+  width: 100px;
+  background-color: cornflowerblue;
+} */
+/* .nav{
+  background-color: rgb(14, 14, 38);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+} */
+ /* .nav{
+  background-color: rgb(14, 14, 38);
+  width: 100%;
+  height: 60px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.part2{
+  display: flex;
+  gap: 30px;
+} */
+
+
+/* ======Flex froggy website===== */
